@@ -11,8 +11,8 @@
         "test-dev": "jest --env=jsdom --watch"
     },
     "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "author": "István Antal <i@istvan.xyz>",
+    "license": "MIT",
     "jest": {
         "coverageThreshold": {
             "global": {
