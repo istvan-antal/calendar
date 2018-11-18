@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`vcalendar parse 1`] = `
+Object {
+  "vcalendar": Object {
+    "calscale": "GREGORIAN",
+    "method": "PUBLISH",
+    "prodid": "-//Yandex LLC//Yandex Calendar//EN",
+    "version": "2.0",
+    "vevent": Object {
+      "created": "20181111T102326Z",
+      "description": "Some description",
+      "dtend;value=date": "20181126",
+      "dtstamp": "20181118T142236Z",
+      "dtstart;value=date": "20181121",
+      "last-modified": "20181111T102441Z",
+      "sequence": "0",
+      "summary": "Test event",
+      "uid": "4E72FC1A-308F-41D6-8CE3-D6ADFA5DD45A",
+      "url": "https://url/event?event_id=1131414",
+    },
+    "vtimezone": Object {
+      "daylight": Object {
+        "dtstart": "19410810T030000",
+        "rdate": "19470810T030000",
+        "tzname": "BST",
+        "tzoffsetfrom": "+0200",
+        "tzoffsetto": "+0100",
+      },
+      "standard": Object {
+        "dtstart": "19960101T000000",
+        "rdate": "19960101T000000",
+        "tzname": "GMT",
+        "tzoffsetfrom": "+0000",
+        "tzoffsetto": "+0000",
+      },
+      "tzid": "Europe/London",
+      "tzurl": "http://tzurl.org/zoneinfo/Europe/London",
+      "x-lic-location": "Europe/London",
+    },
+  },
+}
+`;
+
+exports[`vcalendar toEvent 1`] = `
+Object {
+  "description": "Some description",
+  "end": Object {
+    "day": 26,
+    "month": 11,
+    "year": 2018,
+  },
+  "start": Object {
+    "day": 21,
+    "month": 11,
+    "year": 2018,
+  },
+  "summary": "Test event",
+}
+`;
+
+exports[`vcalendar toEvent 2`] = `
+Object {
+  "description": "Some description",
+  "end": Object {
+    "day": 21,
+    "hour": 16,
+    "minute": 15,
+    "month": 11,
+    "second": 0,
+    "timezone": "europe/london",
+    "year": 2018,
+  },
+  "start": Object {
+    "day": 21,
+    "hour": 11,
+    "minute": 5,
+    "month": 11,
+    "second": 0,
+    "timezone": "europe/london",
+    "year": 2018,
+  },
+  "summary": "Test event",
+}
+`;

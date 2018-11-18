@@ -1,0 +1,92 @@
+{
+    "name": "calendar",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./src/index.tsx",
+    "scripts": {
+        "test": "charge-sdk test",
+        "start": "ts-node ./src/server.ts",
+        "build": "charge-sdk build",
+        "serve": "ts-node ./src/server.ts",
+        "test-dev": "jest --env=jsdom --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "jest": {
+        "coverageThreshold": {
+            "global": {
+                "branches": 100,
+                "functions": 100,
+                "lines": 100,
+                "statements": 100
+            }
+        },
+        "collectCoverage": true,
+        "collectCoverageFrom": [
+            "src/**/*.{js,jsx,ts,tsx}"
+        ],
+        "coverageDirectory": "report",
+        "coverageReporters": [
+            "json",
+            "lcov",
+            "text",
+            "cobertura"
+        ],
+        "coveragePathIgnorePatterns": [
+            "/src/index.ts",
+            "/src/server.ts",
+            "/src/build.ts",
+            "/src/data.ts",
+            "/src/actions/index.ts",
+            "/src/reducers/index.ts",
+            "/src/store/index.ts",
+            "/src/views"
+        ],
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json"
+        ],
+        "transform": {
+            ".(ts|tsx)": "ts-jest"
+        },
+        "testMatch": [
+            "<rootDir>/src/**/__tests__/**/*.js?(x)",
+            "<rootDir>/src/**/?(*.)(spec|test).js?(x)",
+            "<rootDir>/src/**/__tests__/**/*.ts?(x)",
+            "<rootDir>/src/**/?(*.)(spec|test).ts?(x)"
+        ],
+        "testEnvironment": "node",
+        "transformIgnorePatterns": [
+            "[/\\\\]node_modules[/\\\\](?!deepmerge).+\\.(js|jsx|ts|tsx)$"
+        ],
+        "globals": {
+            "ts-jest": {
+                "tsConfig": "./tsconfig.json"
+            }
+        }
+    },
+    "dependencies": {
+        "@types/body-parser": "^1.17.0",
+        "@types/dav": "^1.7.0",
+        "@types/jest": "^23.3.9",
+        "@types/luxon": "^1.4.1",
+        "@types/react": "^16.7.6",
+        "@types/react-dom": "^16.0.9",
+        "@types/react-redux": "^6.0.9",
+        "body-parser": "^1.18.3",
+        "charge-sdk": "^0.3.11",
+        "dav": "^1.8.0",
+        "luxon": "^1.7.1",
+        "react": "^16.6.3",
+        "react-dom": "^16.6.3",
+        "react-redux": "^5.1.1",
+        "redux": "^4.0.1"
+    },
+    "reactTsRuntime": {
+        "compilerMiddleware": "./src/build"
+    }
+}

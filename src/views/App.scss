@@ -1,0 +1,19 @@
+html, body, #app {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.Calendar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .Row {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        .Column {
+            flex-grow: 1;
+        }
+    }
+}
