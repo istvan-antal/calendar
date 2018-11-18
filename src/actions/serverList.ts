@@ -1,6 +1,6 @@
 import { createAction, ActionsUnion } from '.';
 
-interface Server {
+export interface Server {
     username: string;
     password: string;
     server: string;

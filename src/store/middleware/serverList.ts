@@ -1,6 +1,6 @@
 import { MiddlewareAPI, Dispatch, AnyAction } from 'redux';
 import { State } from '../../reducers';
-import { ServerListActions } from '../../actions/serverList';
+import { ServerListActions, serverListActions } from '../../actions/serverList';
 
 export const serverListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListActions | AnyAction>, State>) => (
     next: Dispatch<ServerListActions>,
@@ -13,4 +13,9 @@ export const serverListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListAct
     }
 
     return result;
+};
+
+export const initServerListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListActions | AnyAction>, State>) => {
+    const serverList = JSON.parse(localStorage.getItem('serverList') || '[]');
+    store.dispatch(serverListActions.receiveServers(serverList));
 };

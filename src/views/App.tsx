@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DateTime } from 'luxon';
-import { Client, transport, Credentials, createAccount } from 'dav';
 import './App.scss';
 
 export default class App extends React.Component {
@@ -45,6 +44,9 @@ export default class App extends React.Component {
         }
         return (
             <div className="Calendar">
+                <div>
+                    <button>Add</button>
+                </div>
                 {weeks.map((week, index) => (
                     <div className="Row" key={index}>
                         {week.map(d => (
