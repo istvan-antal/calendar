@@ -1,8 +1,15 @@
 import * as React from 'react';
 import { DateTime } from 'luxon';
 import './App.scss';
+import { serverFormActions } from '../actions/serverForm';
+import { ServerForm } from './ServerForm';
 
-export default class App extends React.Component {
+interface Props {
+    isServerFormOpen?: boolean;
+    openServerForm: typeof serverFormActions.openServerForm;
+}
+
+export default class App extends React.Component<Props> {
     /* constructor() {
         super({});
         fetch('/data', {
@@ -45,7 +52,8 @@ export default class App extends React.Component {
         return (
             <div className="Calendar">
                 <div>
-                    <button>Add</button>
+                    <button onClick={this.props.openServerForm}>Add</button>
+                    {this.props.isServerFormOpen && <ServerForm />}
                 </div>
                 {weeks.map((week, index) => (
                     <div className="Row" key={index}>

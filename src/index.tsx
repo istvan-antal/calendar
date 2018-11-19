@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { render } from 'react-dom';
+import { connect, Provider } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import store, { State } from './store';
 import App from './views/App';
-import { Provider } from 'react-redux';
-import store from './store';
+import { serverFormActions, ServerFormActions } from './actions/serverForm';
 
-// Replace this with actual actions union
-// tslint:disable-next-line:no-any
-type Actions = any;
-import { connect } from 'react-redux';
-import { State } from './store';
-import { Dispatch, bindActionCreators } from 'redux';
+type Actions = ServerFormActions;
+
 const ConnectedApp = connect((state: State) => ({
+    isServerFormOpen: state.serverForm.isOpen,
 }), (dispatch: Dispatch<Actions>) => bindActionCreators({
+    openServerForm: serverFormActions.openServerForm,
 }, dispatch))(App);
 
 render(
