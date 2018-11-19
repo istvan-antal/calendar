@@ -1,11 +1,22 @@
-import * as React from 'react';
-import { ServerForm } from '../views/ServerForm';
+import { ServerForm, ServerFormProps } from '../views/ServerForm';
+import { State } from '../reducers';
+import { Dispatch, bindActionCreators } from 'redux';
+import { ServerFormActions, serverFormActions } from '../actions/serverForm';
+import { connect } from 'react-redux';
 
-interface Props {
-}
+const mapStateToProps = (state: State): { } => ({
+});
 
-export default class ServerFormComponent extends React.Component<Props> {
-    render() {
-        return <ServerForm />;
-    }
-}
+const mapDispatchToProps = (dispatch: Dispatch<ServerFormActions>): {
+    actions: ServerFormProps['actions'];
+} => ({
+    actions: bindActionCreators({
+        cancelServerForm: serverFormActions.cancel,
+        saveServerForm: serverFormActions.save,
+        setServer: serverFormActions.setServer,
+        setUsername: serverFormActions.setUsername,
+        setPassword: serverFormActions.setPassword,
+    }, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ServerForm);

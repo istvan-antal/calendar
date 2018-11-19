@@ -1,0 +1,17 @@
+.Form {
+    .FormRow {
+        margin-bottom: 0.5rem;
+        .FormLabel {
+            display: inline-block;
+            width: 120px;
+        }
+    }
+    .FormButtonRow {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        button {
+            margin-left: 0.5rem;
+        }
+    }
+}

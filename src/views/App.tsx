@@ -3,10 +3,11 @@ import { DateTime } from 'luxon';
 import './App.scss';
 import { serverFormActions } from '../actions/serverForm';
 import { ServerForm } from './ServerForm';
+import ServerFormComponent from '../components/ServerFormComponent';
 
 interface Props {
     isServerFormOpen?: boolean;
-    openServerForm: typeof serverFormActions.openServerForm;
+    openServerForm: typeof serverFormActions.open;
 }
 
 export default class App extends React.Component<Props> {
@@ -50,20 +51,22 @@ export default class App extends React.Component<Props> {
             iterator = iterator.plus({ days: 1 });
         }
         return (
-            <div className="Calendar">
-                <div>
-                    <button onClick={this.props.openServerForm}>Add</button>
-                    {this.props.isServerFormOpen && <ServerForm />}
-                </div>
-                {weeks.map((week, index) => (
-                    <div className="Row" key={index}>
-                        {week.map(d => (
-                            <div className="Column" key={d.toISODate()}>
-                                {d.day}
-                            </div>
-                        ))}
+            <div className="App">
+                <div className="Calendar">
+                    <div className="Toolbar">
+                        <button onClick={this.props.openServerForm}>Add</button>
+                        {this.props.isServerFormOpen && <ServerFormComponent />}
                     </div>
-                ))}
+                    {weeks.map((week, index) => (
+                        <div className="Row" key={index}>
+                            {week.map(d => (
+                                <div className="Column" key={d.toISODate()}>
+                                    {d.day}
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+                </div>
             </div>
         );
     }

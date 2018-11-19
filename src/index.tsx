@@ -11,7 +11,7 @@ type Actions = ServerFormActions;
 const ConnectedApp = connect((state: State) => ({
     isServerFormOpen: state.serverForm.isOpen,
 }), (dispatch: Dispatch<Actions>) => bindActionCreators({
-    openServerForm: serverFormActions.openServerForm,
+    openServerForm: serverFormActions.open,
 }, dispatch))(App);
 
 render(

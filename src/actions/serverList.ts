@@ -7,7 +7,7 @@ export interface Server {
 }
 
 export const serverListActions = {
-    receiveServers: (servers: Server[]) => createAction('receiveServers', servers),
+    receiveServers: (servers: Server[]) => createAction('serverList/receiveServers', servers),
 };
 
 export type ServerListActions = ActionsUnion<typeof serverListActions>;
