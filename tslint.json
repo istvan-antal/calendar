@@ -147,7 +147,7 @@
         "only-arrow-functions": true,
         "object-literal-sort-keys": false,
         "eofline": false,
-        "linebreak-style": [true, "CRLF"],
+        "linebreak-style": [true, "LF"],
         "await-promise": [true, "Thenable"],
         "ban": [
             true,
