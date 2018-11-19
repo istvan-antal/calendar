@@ -11,23 +11,6 @@ interface Props {
 }
 
 export default class App extends React.Component<Props> {
-    /* constructor() {
-        super({});
-        fetch('/data', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: '',
-                password: '',
-                server: '',
-            }),
-        }).then(response => response.json()).then(data => {
-            console.log(data);
-        });
-    }*/
     render() {
         const currentDate = DateTime.local();
         const currentMonth = currentDate.month;

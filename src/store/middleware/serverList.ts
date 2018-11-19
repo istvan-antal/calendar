@@ -8,8 +8,27 @@ export const serverListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListAct
     const result = next(action);
 
     switch (action.type) {
-        default:
-            break;
+        case 'serverList/receiveServers':
+        const servers = store.getState().serverList;
+        servers.forEach(server => {
+            fetch('/data', {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: server.username,
+                    password: server.password,
+                    server: server.server,
+                }),
+            }).then(response => response.json()).then(data => {
+                console.log(data);
+            });
+        });
+        break;
+    default:
+        break;
     }
 
     return result;
