@@ -5,5 +5,5 @@ test('serverList', () => {
     // tslint:disable-next-line:no-any
     expect(serverList(undefined, { type: '' } as any)).toMatchSnapshot();
     expect(serverList(undefined, serverListActions.receiveServers([]))).toMatchSnapshot();
-    expect(serverList([], serverListActions.receiveServers([]))).toMatchSnapshot();
+    expect(serverList({ servers: [] }, serverListActions.receiveServers([]))).toMatchSnapshot();
 });

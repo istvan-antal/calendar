@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { DateTime } from 'luxon';
 import './App.scss';
-import { serverFormActions } from '../actions/serverForm';
-import { ServerForm } from './ServerForm';
-import ServerFormComponent from '../components/ServerFormComponent';
+import Header from './Header';
+import { serverListActions } from '../actions/serverList';
 
 interface Props {
-    isServerFormOpen?: boolean;
-    openServerForm: typeof serverFormActions.open;
+    isServerListOpen?: boolean;
+    toggleServerList: typeof serverListActions.toggle;
 }
 
 export default class App extends React.Component<Props> {
@@ -21,8 +20,6 @@ export default class App extends React.Component<Props> {
         let currentWeekList: DateTime[] = [];
         let currentWeekNumber = viewStartDate.weekNumber;
         while (iterator < viewEndDate) {
-            console.log(iterator.weekNumber);
-
             if (currentWeekNumber !== iterator.weekNumber) {
                 currentWeekNumber = iterator.weekNumber;
                 weeks.push(currentWeekList);
@@ -36,10 +33,11 @@ export default class App extends React.Component<Props> {
         return (
             <div className="App">
                 <div className="Calendar">
-                    <div className="Toolbar">
-                        <button onClick={this.props.openServerForm}>Add</button>
-                        {this.props.isServerFormOpen && <ServerFormComponent />}
-                    </div>
+                    <Header
+                        currentDate={currentDate}
+                        isServerListOpen={this.props.isServerListOpen}
+                        toggleServerList={this.props.toggleServerList}
+                    />
                     {weeks.map((week, index) => (
                         <div className="Row" key={index}>
                             {week.map(d => (

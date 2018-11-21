@@ -12,7 +12,7 @@ export const serverFormMiddleware = (store: MiddlewareAPI<Dispatch<ServerFormAct
 
     switch (action.type) {
         case 'serverForm/save':
-            const newServerList = [...serverList, {
+            const newServerList = [...serverList.servers, {
                 ...form,
                 isOpen: undefined,
             }];

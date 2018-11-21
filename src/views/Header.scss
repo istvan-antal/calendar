@@ -1,0 +1,12 @@
+.Header {
+    padding-bottom: 0.8rem;
+    display: flex;
+    flex-direction: row;
+    .HeaderTitle {
+        flex-grow: 1;
+        font-size: 2rem;
+    }
+    .HeaderMenu {
+        position: relative;
+    }
+}

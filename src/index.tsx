@@ -2,16 +2,18 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { connect, Provider } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import store, { State } from './store';
+import store from './store';
 import App from './views/App';
-import { serverFormActions, ServerFormActions } from './actions/serverForm';
+import { ServerFormActions } from './actions/serverForm';
+import { State } from './reducers';
+import { serverListActions } from './actions/serverList';
 
 type Actions = ServerFormActions;
 
 const ConnectedApp = connect((state: State) => ({
-    isServerFormOpen: state.serverForm.isOpen,
+    isServerListOpen: state.serverList.isOpen,
 }), (dispatch: Dispatch<Actions>) => bindActionCreators({
-    openServerForm: serverFormActions.open,
+    toggleServerList: serverListActions.toggle,
 }, dispatch))(App);
 
 render(

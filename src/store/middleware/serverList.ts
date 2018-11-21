@@ -9,8 +9,8 @@ export const serverListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListAct
 
     switch (action.type) {
         case 'serverList/receiveServers':
-        const servers = store.getState().serverList;
-        servers.forEach(server => {
+        const serversList = store.getState().serverList;
+        serversList.servers.forEach(server => {
             fetch('/data', {
                 method: 'post',
                 headers: {
