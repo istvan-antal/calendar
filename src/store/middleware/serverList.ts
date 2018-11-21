@@ -22,8 +22,10 @@ export const serverListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListAct
                     password: server.password,
                     server: server.server,
                 }),
-            }).then(response => response.json()).then(data => {
+            }).then(async response => response.json()).then(data => {
                 console.log(data);
+            }).catch(error => {
+                throw error;
             });
         });
         break;
