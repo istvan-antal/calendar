@@ -34,7 +34,7 @@ export default (app: any) => {
         })
             .then(account => {
                 const accountResponse: Account = {
-                    calendars: account.calendars.map(cal => {
+                    calendars: account.calendars.filter(cal => cal.components.includes('VEVENT')).map(cal => {
                         const calendar: Calendar = {
                             displayName: cal.displayName,
                             events: cal.objects.map(obj => {
