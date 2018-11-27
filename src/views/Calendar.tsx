@@ -3,6 +3,7 @@ import { DateTime } from 'luxon';
 import './Calendar.scss';
 
 interface Props {
+    currentTime: DateTime;
 }
 
 interface State {
@@ -10,10 +11,11 @@ interface State {
 
 export default class Calendar extends React.Component<Props, State> {
     render() {
-        const currentDate = DateTime.local();
-        const currentMonth = currentDate.month;
-        const viewStartDate = currentDate.startOf('month').startOf('week');
-        const viewEndDate = currentDate.endOf('month').endOf('week');
+        const props = this.props;
+        const currentTime = props.currentTime;
+        const currentMonth = currentTime.month;
+        const viewStartDate = currentTime.startOf('month').startOf('week');
+        const viewEndDate = currentTime.endOf('month').endOf('week');
         let iterator = viewStartDate;
         const weeks: DateTime[][] = [];
         let currentWeekList: DateTime[] = [];

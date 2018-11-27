@@ -12,13 +12,13 @@ library.add(faBars);
 interface HeaderProps {
     isServerListOpen?: boolean;
     toggleServerList: typeof serverListActions.toggle;
-    currentDate: DateTime;
+    currentTime: DateTime;
 }
 
 export default (props: HeaderProps) => (
     <div className="Header">
         <div className="HeaderTitle">
-            {props.currentDate.toFormat('LLLL')}
+            {props.currentTime.toFormat('LLLL')}
         </div>
         <div className="HeaderMenu">
             <button onClick={props.toggleServerList}>
