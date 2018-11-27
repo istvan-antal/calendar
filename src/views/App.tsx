@@ -6,25 +6,20 @@ import { serverListActions } from '../actions/serverList';
 import Calendar from './Calendar';
 
 interface Props {
-    // currentTime: DateTime;
+    currentTime: string;
     isServerListOpen?: boolean;
     toggleServerList: typeof serverListActions.toggle;
 }
 
-export default class App extends React.Component<Props> {
-    render() {
-        const currentTime = DateTime.local();
-        return (
-            <div className="App">
-                <div className="Calendar">
-                    <Header
-                        currentTime={currentTime}
-                        isServerListOpen={this.props.isServerListOpen}
-                        toggleServerList={this.props.toggleServerList}
-                    />
-                    <Calendar currentTime={currentTime} />
-                </div>
-            </div>
-        );
-    }
-}
+export default (props: Props) => (
+    <div className="App">
+        <div className="Calendar">
+            <Header
+                currentTime={props.currentTime}
+                isServerListOpen={props.isServerListOpen}
+                toggleServerList={props.toggleServerList}
+            />
+            <Calendar currentTime={props.currentTime} />
+        </div>
+    </div>
+);

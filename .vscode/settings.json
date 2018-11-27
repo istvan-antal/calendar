@@ -4,4 +4,9 @@
     "editor.tabSize": 4,
     "editor.tabCompletion": "on",
     "files.eol": "\n",
+    "problems.autoReveal": true,
+    "problems.decorations.enabled": true,
+    "outline.problems.badges": true,
+    "outline.problems.colors": true,
+    "outline.problems.enabled": true,
 }

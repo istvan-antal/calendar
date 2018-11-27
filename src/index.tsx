@@ -12,6 +12,7 @@ type Actions = ServerFormActions;
 
 const ConnectedApp = connect((state: State) => ({
     isServerListOpen: state.serverList.isOpen,
+    currentTime: state.currentView.currentTime,
 }), (dispatch: Dispatch<Actions>) => bindActionCreators({
     toggleServerList: serverListActions.toggle,
 }, dispatch))(App);
