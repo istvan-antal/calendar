@@ -60,7 +60,7 @@ export const serverListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListAct
                     .reduce((a, b) => a.concat(b.calendars), [] as Calendar[])
                     .map(item => item.events)
                     .reduce((a, b) => a.concat(b), []);
-                console.log(events);
+                console.log(JSON.stringify(events));
             })().catch(error => {
                 throw error;
             });
