@@ -1,0 +1,16 @@
+.Calendar {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    .Row {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        .Column {
+            flex-grow: 1;
+            flex-basis: 0;
+            justify-content: space-evenly;
+        }
+    }
+}
