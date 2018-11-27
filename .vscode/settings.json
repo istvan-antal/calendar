@@ -1,0 +1,7 @@
+{
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "tslint.configFile": "tslint.json",
+    "editor.tabSize": 4,
+    "editor.tabCompletion": "on",
+    "files.eol": "\n",
+}
