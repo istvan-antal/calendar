@@ -23,6 +23,24 @@
             "problemMatcher": [
                 "$tsc"
             ]
+        },
+        {
+            "label": "Test",
+            "type": "npm",
+            "script": "test-dev",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
         }
     ]
 }
