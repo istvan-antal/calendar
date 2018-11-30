@@ -41,6 +41,7 @@
             "/src/actions/index.ts",
             "/src/reducers/index.ts",
             "/src/store/index.ts",
+            "/src/store/middleware/",
             "/src/views"
         ],
         "moduleFileExtensions": [

@@ -1,6 +1,9 @@
 import { MiddlewareAPI, Dispatch } from 'redux';
 import { State } from '../../reducers';
 import { ServerListActions, serverListActions, Server } from '../../actions/serverList';
+import filterEvent from '../../filterEvent';
+import { DateTime } from 'luxon';
+import { eventsActions, EventsAction } from '../../actions/events';
 
 interface CalendarDateTime {
     year: number;
@@ -45,7 +48,14 @@ const fetchAccounts = async (server: Server): Promise<ResultSet> => fetch('/data
     }),
 }).then(async response => response.json());
 
-export const serverListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListActions>, State>) => (
+export const initServerListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListActions>, State>) => {
+    setTimeout(() => {
+        const serverList = JSON.parse(localStorage.getItem('serverList') || '[]');
+        store.dispatch(serverListActions.receiveServers(serverList));
+    }, 0);
+};
+
+export const serverListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListActions | EventsAction>, State>) => (
     next: Dispatch<ServerListActions>,
 ) => (action: ServerListActions) => {
     const result = next(action);
@@ -55,12 +65,15 @@ export const serverListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListAct
         const serversList = store.getState().serverList;
         serversList.servers.forEach(server => {
             (async () => {
+                const currentTime = DateTime.fromISO(store.getState().currentView.currentTime);
+                const currentView = 'month';
                 const { accounts } = await fetchAccounts(server);
                 const events = accounts
                     .reduce((a, b) => a.concat(b.calendars), [] as Calendar[])
                     .map(item => item.events)
-                    .reduce((a, b) => a.concat(b), []);
-                console.log(JSON.stringify(events));
+                    .reduce((a, b) => a.concat(b), [])
+                    .filter(event => filterEvent(event, currentTime, currentView));
+                store.dispatch(eventsActions.receive(events));
             })().catch(error => {
                 throw error;
             });
@@ -71,9 +84,4 @@ export const serverListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListAct
     }
 
     return result;
-};
-
-export const initServerListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListActions>, State>) => {
-    const serverList = JSON.parse(localStorage.getItem('serverList') || '[]');
-    store.dispatch(serverListActions.receiveServers(serverList));
 };
