@@ -1,5 +1,5 @@
 import { createAction, ActionsUnion } from '.';
-import { Event } from '../../vcalendar';
+import { Event } from '../../util/vcalendar';
 
 export const eventsActions = {
     receive: (events: Event[]) => createAction('events/receive', events),

@@ -1,7 +1,7 @@
 import { MiddlewareAPI, Dispatch } from 'redux';
 import { State } from '../reducers';
 import { ServerListActions, serverListActions, Server } from '../actions/serverList';
-import filterEvent from '../../filterEvent';
+import filterEvent from '../../util/filterEvent';
 import { DateTime } from 'luxon';
 import { eventsActions, EventsAction } from '../actions/events';
 

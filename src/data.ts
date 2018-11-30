@@ -1,5 +1,5 @@
 import { transport, Credentials, createAccount } from 'dav';
-import { parseVcalendar, toEvent, Event } from './vcalendar';
+import { parseVcalendar, toEvent, Event } from './util/vcalendar';
 import * as bodyParser from 'body-parser';
 
 interface Calendar {

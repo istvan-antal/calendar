@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DateTime } from 'luxon';
 import './Calendar.scss';
-import { Event } from '../vcalendar';
+import { Event } from '../util/vcalendar';
 
 interface Props {
     currentTime: string;
