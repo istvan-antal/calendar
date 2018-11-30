@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DateTime } from 'luxon';
 import './Calendar.scss';
 import { Event } from '../util/vcalendar';
+import filterEvent from '../util/filterEvent';
 
 interface Props {
     currentTime: string;
@@ -10,7 +11,6 @@ interface Props {
 
 export default (props: Props) => {
     const currentTime = DateTime.fromISO(props.currentTime);
-    const currentMonth = currentTime.month;
     const viewStartDate = currentTime.startOf('month').startOf('week');
     const viewEndDate = currentTime.endOf('month').endOf('week');
     let iterator = viewStartDate;
@@ -24,7 +24,10 @@ export default (props: Props) => {
             currentWeekList = [];
         }
 
-        currentWeekList.push({ time: iterator, events: [] });
+        currentWeekList.push({
+            time: iterator,
+            events: props.events.filter(event => filterEvent(event, iterator, 'day')),
+        });
 
         iterator = iterator.plus({ days: 1 });
     }
@@ -35,6 +38,7 @@ export default (props: Props) => {
                     {week.map(d => (
                         <div className="Column" key={d.time.toISODate()}>
                             {d.time.day}
+                            {d.events.map((event, key) => <div key={key}>{event.summary}</div>)}
                         </div>
                     ))}
                 </div>
