@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { DateTime } from 'luxon';
 import './App.scss';
 import Header from './Header';
 import { serverListActions } from '../store/actions/serverList';
-import Calendar from './Calendar';
+import CalendarComponent from '../components/CalendarComponent';
 
 interface Props {
     currentTime: string;
@@ -19,7 +18,7 @@ export default (props: Props) => (
                 isServerListOpen={props.isServerListOpen}
                 toggleServerList={props.toggleServerList}
             />
-            <Calendar currentTime={props.currentTime} />
+            <CalendarComponent />
         </div>
     </div>
 );
