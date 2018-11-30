@@ -4,9 +4,9 @@ import { connect, Provider } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import store from './store';
 import App from './views/App';
-import { ServerFormActions } from './actions/serverForm';
-import { State } from './reducers';
-import { serverListActions } from './actions/serverList';
+import { ServerFormActions } from './store/actions/serverForm';
+import { State } from './store/reducers';
+import { serverListActions } from './store/actions/serverList';
 
 type Actions = ServerFormActions;
 

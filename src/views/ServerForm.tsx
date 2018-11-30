@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { serverFormActions } from '../actions/serverForm';
+import { serverFormActions } from '../store/actions/serverForm';
 import './ServerForm.scss';
 
 export interface ServerFormProps {

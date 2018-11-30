@@ -1,7 +1,7 @@
 import { MiddlewareAPI, Dispatch, AnyAction } from 'redux';
-import { State } from '../../reducers';
-import { ServerFormActions, serverFormActions } from '../../actions/serverForm';
-import { serverListActions } from '../../actions/serverList';
+import { State } from '../reducers';
+import { ServerFormActions, serverFormActions } from '../actions/serverForm';
+import { serverListActions } from '../actions/serverList';
 
 export const serverFormMiddleware = (store: MiddlewareAPI<Dispatch<ServerFormActions | AnyAction>, State>) => (
     next: Dispatch<ServerFormActions>,

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import './ServerList.scss';
-import { Server } from '../actions/serverList';
+import { Server } from '../store/actions/serverList';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import ServerFormComponent from '../components/ServerFormComponent';
-import { serverFormActions } from '../actions/serverForm';
+import { serverFormActions } from '../store/actions/serverForm';
 
 library.add(faPlus);
 

@@ -1,9 +1,9 @@
 import { MiddlewareAPI, Dispatch } from 'redux';
-import { State } from '../../reducers';
-import { ServerListActions, serverListActions, Server } from '../../actions/serverList';
+import { State } from '../reducers';
+import { ServerListActions, serverListActions, Server } from '../actions/serverList';
 import filterEvent from '../../filterEvent';
 import { DateTime } from 'luxon';
-import { eventsActions, EventsAction } from '../../actions/events';
+import { eventsActions, EventsAction } from '../actions/events';
 
 interface CalendarDateTime {
     year: number;

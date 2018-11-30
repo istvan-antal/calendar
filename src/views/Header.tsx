@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import './Header.scss';
 import ServerListComponent from '../components/ServerListComponent';
-import { serverListActions } from '../actions/serverList';
+import { serverListActions } from '../store/actions/serverList';
 
 library.add(faBars);
 

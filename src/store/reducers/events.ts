@@ -1,5 +1,5 @@
 import { EventsAction } from '../actions/events';
-import { Event } from '../vcalendar';
+import { Event } from '../../vcalendar';
 
 type State = Event[];
 const defaultState: State = [];

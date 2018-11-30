@@ -1,6 +1,6 @@
 import { MiddlewareAPI, Dispatch } from 'redux';
-import { State } from '../../reducers';
-import { CurrentViewAction, currentViewActions } from '../../actions/currentView';
+import { State } from '../reducers';
+import { CurrentViewAction, currentViewActions } from '../actions/currentView';
 import { DateTime } from 'luxon';
 
 export const currentViewMiddleware = (store: MiddlewareAPI<Dispatch, State>) => (

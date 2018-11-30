@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DateTime } from 'luxon';
 import './App.scss';
 import Header from './Header';
-import { serverListActions } from '../actions/serverList';
+import { serverListActions } from '../store/actions/serverList';
 import Calendar from './Calendar';
 
 interface Props {

@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import reducers from '../reducers';
+import reducers from './reducers';
 import { serverListMiddleware, initServerListMiddleware } from './middleware/serverList';
 import { serverFormMiddleware } from './middleware/serverForm';
 import { initCurrentViewMiddleware } from './middleware/currentView';

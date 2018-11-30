@@ -1,8 +1,8 @@
-import { State } from '../reducers';
+import { State } from '../store/reducers';
 import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ServerList from '../views/ServerList';
-import { ServerFormActions, serverFormActions } from '../actions/serverForm';
+import { ServerFormActions, serverFormActions } from '../store/actions/serverForm';
 
 const mapStateToProps = (state: State) => ({
     servers: state.serverList.servers,
