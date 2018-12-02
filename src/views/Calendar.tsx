@@ -3,10 +3,12 @@ import { DateTime } from 'luxon';
 import './Calendar.scss';
 import { Event } from '../util/vcalendar';
 import filterEvent from '../util/filterEvent';
+import { State } from '../store/reducers';
 
 interface Props {
     currentTime: string;
     events: Event[];
+    calendarColors: State['calendarList']['calendarColors'];
 }
 
 export default (props: Props) => {
@@ -38,7 +40,11 @@ export default (props: Props) => {
                     {week.map(d => (
                         <div className="Column" key={d.time.toISODate()}>
                             {d.time.day}
-                            {d.events.map((event, key) => <div key={key}>{event.summary}</div>)}
+                            {d.events.map((event, key) => (
+                                <div style={{ backgroundColor: props.calendarColors[event.calendarUrl] }} key={key}>
+                                    {event.summary}
+                                </div>
+                            ))}
                         </div>
                     ))}
                 </div>

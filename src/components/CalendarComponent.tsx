@@ -6,6 +6,7 @@ import Calendar from '../views/Calendar';
 const mapStateToProps = (state: State) => ({
     currentTime: state.currentView.currentTime,
     events: state.events,
+    calendarColors: state.calendarList.calendarColors,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => (

@@ -9,11 +9,12 @@ library.add(faTimes);
 interface Props {
     title: string;
     children: JSX.Element | string | Array<JSX.Element | string | boolean | undefined>;
+    className?: string;
     onClose(): void;
 }
 
 export default (props: Props) => (
-    <div className="Dialog">
+    <div className={`Dialog${props.className ? ` ${props.className}` : ''}`}>
         <div className="DialogHeader">
             <div className="DialogHeaderTitle">
                 {props.title}

@@ -12,19 +12,37 @@ interface Props {
     toggleAppMenu(): void;
     closeAppMenu(): void;
     openServerList(): void;
+    openCalendarList(): void;
+    closeCalendarList(): void;
 }
 
 interface AppMenuDropDownProps {
     openServerList(): void;
     closeAppMenu(): void;
+    openCalendarList(): void;
+    closeCalendarList(): void;
 }
 
 const AppMenuDropDown = (props: AppMenuDropDownProps) => (
     <div className="AppMenuDropDown">
-        <a className="AppMenuDropDownItem" onClick={() => {
-            props.openServerList();
-            props.closeAppMenu();
-        }}>Servers</a>
+        <ul>
+            <li>
+                <a className="AppMenuDropDownItem" onClick={() => {
+                    props.openCalendarList();
+                    props.closeAppMenu();
+                }}>
+                    Calendars
+                </a>
+            </li>
+            <li>
+                <a className="AppMenuDropDownItem" onClick={() => {
+                    props.openServerList();
+                    props.closeAppMenu();
+                }}>
+                    Servers
+                </a>
+            </li>
+        </ul>
     </div>
 );
 
@@ -35,7 +53,9 @@ export default (props: Props) => (
         </button>
         {props.isAppMenuOpen && <AppMenuDropDown
             openServerList={props.openServerList}
+            closeCalendarList={props.openCalendarList}
             closeAppMenu={props.closeAppMenu}
+            openCalendarList={props.openCalendarList}
         />}
     </FocusView>
 );

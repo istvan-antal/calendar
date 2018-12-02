@@ -4,28 +4,7 @@ import { ServerListActions, serverListActions, Server } from '../actions/serverL
 import filterEvent from '../../util/filterEvent';
 import { DateTime } from 'luxon';
 import { eventsActions, EventsAction } from '../actions/events';
-
-interface CalendarDateTime {
-    year: number;
-    month: number;
-    day: number;
-    hour?: number;
-    minute?: number;
-    second?: number;
-    timezone?: string;
-}
-
-interface Event {
-    summary: string;
-    description: string;
-    start: CalendarDateTime;
-    end: CalendarDateTime;
-}
-
-interface Calendar {
-    displayName: string;
-    events: Event[];
-}
+import { Calendar, calendarListActions, CalendarListAction } from '../actions/calendarList';
 
 interface Account {
     calendars: Calendar[];
@@ -55,7 +34,9 @@ export const initServerListMiddleware = (store: MiddlewareAPI<Dispatch<ServerLis
     }, 0);
 };
 
-export const serverListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListActions | EventsAction>, State>) => (
+export const serverListMiddleware = (
+    store: MiddlewareAPI<Dispatch<ServerListActions | CalendarListAction | EventsAction>, State>,
+) => (
     next: Dispatch<ServerListActions>,
 ) => (action: ServerListActions) => {
     const result = next(action);
@@ -68,11 +49,13 @@ export const serverListMiddleware = (store: MiddlewareAPI<Dispatch<ServerListAct
                 const currentTime = DateTime.fromISO(store.getState().currentView.currentTime);
                 const currentView = 'month';
                 const { accounts } = await fetchAccounts(server);
-                const events = accounts
-                    .reduce((a, b) => a.concat(b.calendars), [] as Calendar[])
+                const calendars = accounts
+                    .reduce((a, b) => a.concat(b.calendars), [] as Calendar[]);
+                const events = calendars
                     .map(item => item.events)
                     .reduce((a, b) => a.concat(b), [])
                     .filter(event => filterEvent(event, currentTime, currentView));
+                store.dispatch(calendarListActions.receive(calendars));
                 store.dispatch(eventsActions.receive(events));
             })().catch(error => {
                 throw error;

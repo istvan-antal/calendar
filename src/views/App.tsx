@@ -4,10 +4,12 @@ import Header from './Header';
 import { serverListActions } from '../store/actions/serverList';
 import CalendarComponent from '../components/CalendarComponent';
 import ServerListComponent from '../components/ServerListComponent';
+import CalendarListComponent from '../components/CalendarListComponent';
 
 interface Props {
     currentTime: string;
     isServerListOpen?: boolean;
+    isCalendarListOpen: boolean;
     toggleServerList: typeof serverListActions.toggle;
 }
 
@@ -22,5 +24,6 @@ export default (props: Props) => (
             <CalendarComponent />
         </div>
         {props.isServerListOpen && <ServerListComponent />}
+        {props.isCalendarListOpen && <CalendarListComponent />}
     </div>
 );

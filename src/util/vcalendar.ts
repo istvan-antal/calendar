@@ -58,6 +58,7 @@ interface CalendarDateTime {
 }
 
 export interface Event {
+    calendarUrl: string;
     summary: string;
     description: string;
     start: CalendarDateTime;
@@ -111,6 +112,7 @@ export const toEvent = (data: RecursiveMap) => {
     const end = extractDate(endKey, vEvent);
 
     const result: Event = {
+        calendarUrl: '',
         summary: vEvent.summary as string,
         description: vEvent.description as string,
         start,

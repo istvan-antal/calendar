@@ -4,10 +4,12 @@ import { serverForm } from './serverForm';
 import { currentView } from './currentView';
 import { events } from './events';
 import { appMenu } from './appMenu';
+import { calendarList } from './calendarList';
 
 const reducers = combineReducers({
     currentView,
     serverList,
+    calendarList,
     serverForm,
     events,
     appMenu,

@@ -1,13 +1,10 @@
 import { transport, Credentials, createAccount } from 'dav';
-import { parseVcalendar, toEvent, Event } from './util/vcalendar';
+import { parseVcalendar, toEvent } from './util/vcalendar';
 import * as bodyParser from 'body-parser';
-
-interface Calendar {
-    displayName: string;
-    events: Event[];
-}
+import { Calendar } from './store/actions/calendarList';
 
 interface Account {
+    url: string;
     calendars: Calendar[];
 }
 
@@ -30,11 +27,14 @@ export default (app: any) => {
         })
             .then(account => {
                 const accountResponse: Account = {
+                    url: account.principalUrl,
                     calendars: account.calendars.filter(cal => cal.components.includes('VEVENT')).map(cal => {
                         const calendar: Calendar = {
+                            url: cal.url,
                             displayName: cal.displayName,
                             events: cal.objects.map(obj => {
                                 const event = toEvent(parseVcalendar(obj.calendarData));
+                                event.calendarUrl = cal.url;
                                 return event;
                             }),
                         };
