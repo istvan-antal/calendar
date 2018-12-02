@@ -9,4 +9,14 @@
     "outline.problems.badges": true,
     "outline.problems.colors": true,
     "outline.problems.enabled": true,
+    "files.exclude": {
+        ".vscode": true,
+        "report": true,
+        "node_modules": true,
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true
+    },
 }
