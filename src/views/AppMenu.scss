@@ -1,0 +1,16 @@
+@import "./Form.scss";
+
+.AppMenu {
+    position: relative;
+    .AppMenuDropDown {
+        position: absolute;
+        top: 24px;
+        right: 0;
+        width: 300px;
+        padding: 0.5rem;
+        background-color: #CCC;
+        .AppMenuDropDownItem {
+            cursor: pointer;
+        }
+    }
+}

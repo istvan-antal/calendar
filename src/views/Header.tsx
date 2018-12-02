@@ -1,13 +1,8 @@
 import * as React from 'react';
 import { DateTime } from 'luxon';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 import './Header.scss';
-import ServerListComponent from '../components/ServerListComponent';
 import { serverListActions } from '../store/actions/serverList';
-
-library.add(faBars);
+import AppMenuComponent from '../components/AppMenuComponent';
 
 interface HeaderProps {
     isServerListOpen?: boolean;
@@ -20,11 +15,6 @@ export default (props: HeaderProps) => (
         <div className="HeaderTitle">
             {DateTime.fromISO(props.currentTime).toFormat('LLLL')}
         </div>
-        <div className="HeaderMenu">
-            <button onClick={props.toggleServerList}>
-                <FontAwesomeIcon icon="bars" />
-            </button>
-            {props.isServerListOpen && <ServerListComponent />}
-        </div>
+        <AppMenuComponent />
     </div>
 );

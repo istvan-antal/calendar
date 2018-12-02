@@ -11,10 +11,6 @@ interface Account {
     calendars: Calendar[];
 }
 
-interface Response {
-    accounts: Account[];
-}
-
 // tslint:disable-next-line:no-any
 export default (app: any) => {
     app.use(bodyParser.json());

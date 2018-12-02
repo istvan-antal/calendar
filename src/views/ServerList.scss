@@ -1,10 +1,12 @@
 @import "./Form.scss";
 
+$serverListWidth: 300px;
+
 .ServerList {
     position: absolute;
-    top: 24px;
-    right: 0;
-    width: 300px;
+    top: 50px;
+    left: calc(50% - $serverListWidth / 2);
+    width: $serverListWidth;
     padding: 0.5rem;
     background-color: #CCC;
 }

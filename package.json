@@ -82,7 +82,7 @@
         "@types/react-dom": "^16.0.9",
         "@types/react-redux": "^6.0.9",
         "body-parser": "^1.18.3",
-        "charge-sdk": "^0.3.11",
+        "charge-sdk": "^0.3.12",
         "dav": "^1.8.0",
         "luxon": "^1.7.1",
         "react": "^16.6.3",

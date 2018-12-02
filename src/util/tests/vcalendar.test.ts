@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import { parseVcalendar, toEvent, RecursiveMap } from '../vcalendar';
+import { parseVcalendar, toEvent } from '../vcalendar';
 
 const exampleVcalendarData = readFileSync(resolve(__dirname, 'vcalendarExample.txt')).toString();
 

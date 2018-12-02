@@ -3,6 +3,7 @@ import './App.scss';
 import Header from './Header';
 import { serverListActions } from '../store/actions/serverList';
 import CalendarComponent from '../components/CalendarComponent';
+import ServerListComponent from '../components/ServerListComponent';
 
 interface Props {
     currentTime: string;
@@ -20,5 +21,6 @@ export default (props: Props) => (
             />
             <CalendarComponent />
         </div>
+        {props.isServerListOpen && <ServerListComponent />}
     </div>
 );
