@@ -1,0 +1,16 @@
+$dialogWidth: 300px;
+
+.Dialog {
+    position: absolute;
+    top: 50px;
+    left: calc(50% - $dialogWidth / 2);
+    width: $dialogWidth;
+    padding: 0.5rem;
+    background-color: #CCC;
+    .DialogHeader {
+        display: flex;
+        justify-content: space-between;
+        .DialogHeaderCloseIcon {
+        }
+    }
+}

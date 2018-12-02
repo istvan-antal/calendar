@@ -1,13 +1,12 @@
 import * as React from 'react';
-import './ServerList.scss';
 import { Server } from '../store/actions/serverList';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import ServerFormComponent from '../components/ServerFormComponent';
+import Dialog from './Dialog';
 
 library.add(faPlus);
-library.add(faTimes);
 
 interface Props {
     servers: Server[];
@@ -17,10 +16,7 @@ interface Props {
 }
 
 export default (props: Props) => (
-    <div className="ServerList">
-        <a onClick={props.close}>
-            <FontAwesomeIcon icon="times" />
-        </a>
+    <Dialog title="Servers" onClose={props.close}>
         {props.isServerFormOpen && <ServerFormComponent />}
         <table>
             <tbody>
@@ -39,5 +35,5 @@ export default (props: Props) => (
         <button onClick={props.openServerForm}>
             <FontAwesomeIcon icon="plus" />
         </button>
-    </div>
+    </Dialog>
 );
