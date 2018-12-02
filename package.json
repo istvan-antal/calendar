@@ -5,9 +5,9 @@
     "main": "./src/index.tsx",
     "scripts": {
         "test": "charge-sdk test",
-        "start": "ts-node ./src/server.ts",
+        "start": "ts-node ./src/devServer.ts",
         "build": "charge-sdk build",
-        "serve": "ts-node ./src/server.ts",
+        "serve": "ts-node ./src/devServer.ts",
         "test-dev": "jest --env=jsdom --watch"
     },
     "keywords": [],
