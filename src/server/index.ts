@@ -22,7 +22,7 @@ app.get('*', (_req: any, res: any, _next: any) => {
             ws.onclose = function() {
                 // websocket is closed.
                 alert("Connection is closed...");
-             };
+            };
         </script>
     `);
 });

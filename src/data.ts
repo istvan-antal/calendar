@@ -2,6 +2,7 @@ import { transport, Credentials, createAccount } from 'dav';
 import { parseVcalendar, toEvent } from './util/vcalendar';
 import * as bodyParser from 'body-parser';
 import { Calendar } from './store/actions/calendarList';
+import { create } from './server/ws';
 
 interface Account {
     url: string;
@@ -10,6 +11,9 @@ interface Account {
 
 // tslint:disable-next-line:no-any
 export default (app: any) => {
+    create({
+        port: 3001,
+    });
     app.use(bodyParser.json());
     // tslint:disable-next-line:no-any
     app.post('/data', (request: any, response: any) => {
