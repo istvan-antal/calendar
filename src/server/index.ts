@@ -1,6 +1,6 @@
 const app = require('express')();
 import { createServer } from 'http';
-import { create } from './server/ws';
+import { create } from './ws';
 
 const server = createServer(app);
 create({
