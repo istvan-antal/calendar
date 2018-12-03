@@ -1,9 +1,9 @@
 const app = require('express')();
 import { createServer } from 'http';
-import { Server } from 'ws';
+import { create } from './server/ws';
 
 const server = createServer(app);
-const wss = new Server({
+create({
     server,
 });
 
@@ -25,15 +25,6 @@ app.get('*', (_req: any, res: any, _next: any) => {
              };
         </script>
     `);
-});
-
-wss.on('connection', ws => {
-    console.log('New connection');
-    ws.send('[]');
-
-    ws.on('close', () => {
-        console.log('Close');
-    });
 });
 
 // tslint:disable-next-line:no-magic-numbers
