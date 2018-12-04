@@ -4,6 +4,7 @@ import { serverListMiddleware, initServerListMiddleware } from './middleware/ser
 import { serverFormMiddleware } from './middleware/serverForm';
 import { initCurrentViewMiddleware } from './middleware/currentView';
 import { calendarListMiddleware, initCalendarListMiddleware } from './middleware/calendarList';
+import { initServerWebsocketMiddleware, websocketMiddleware } from './middleware/websocket';
 
 // tslint:disable-next-line:no-any
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -12,6 +13,7 @@ const store = createStore(
     reducers,
     composeEnhancers(
         applyMiddleware(
+            websocketMiddleware,
             serverListMiddleware,
             serverFormMiddleware,
             calendarListMiddleware,
@@ -19,6 +21,7 @@ const store = createStore(
     ),
 );
 
+initServerWebsocketMiddleware(store);
 initServerListMiddleware(store);
 initCurrentViewMiddleware(store);
 initCalendarListMiddleware(store);

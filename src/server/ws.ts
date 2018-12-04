@@ -5,7 +5,15 @@ export const create = (options: ServerOptions) => {
 
     wss.on('connection', ws => {
         console.log('New connection');
-        ws.send('[]');
+        // ws.send('[]');
+
+        ws.on('message', data => {
+            const action = JSON.stringify(data);
+            switch (action) {
+                default:
+                break;
+            }
+        });
 
         ws.on('close', () => {
             console.log('Close');

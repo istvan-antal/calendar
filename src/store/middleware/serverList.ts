@@ -14,20 +14,6 @@ interface ResultSet {
     accounts: Account[];
 }
 
-/*
-console.log(`Connecting to ${location.origin.replace('http://', 'ws://')}/ws`);
-const ws = new WebSocket(`${location.origin.replace('http://', 'ws://')}/ws`);
-ws.onopen = () => {
-    console.log('open');
-};
-ws.onmessage = m => {
-    console.log(m);
-};
-ws.onclose = () => {
-    // websocket is closed.
-    console.log('Connection is closed...');
-};*/
-
 const fetchAccounts = async (server: Server): Promise<ResultSet> => fetch('/data', {
     method: 'post',
     headers: {
