@@ -15,8 +15,16 @@
             .TimeLabel {
                 font-size: 1.2rem;
             }
+            .Event {
+                padding: 0.1rem;
+                text-shadow:
+                -0.5px -0.5px 0 #000,
+                0.5px -0.5px 0 #000,
+                -0.5px 0.5px 0 #000,
+                0.5px 0.5px 0 #000;
+            }
             &.current {
-                background-color: #ccc;
+                background-color: rgb(37, 44, 56);
             }
         }
     }

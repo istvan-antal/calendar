@@ -46,7 +46,9 @@ export default (props: Props) => {
                                 {d.time.day}
                             </div>
                             {d.events.map((event, key) => (
-                                <div style={{ backgroundColor: props.calendarColors[event.calendarUrl] }} key={key}>
+                                <div
+                                    className="Event"
+                                    style={{ backgroundColor: props.calendarColors[event.calendarUrl] }} key={key}>
                                     {event.summary}
                                 </div>
                             ))}
