@@ -15,7 +15,6 @@ ws.onopen = () => {
     });
 };
 ws.onmessage = event => {
-    console.log(event.data);
     currentStore.dispatch(JSON.parse(event.data));
 };
 ws.onclose = () => {
