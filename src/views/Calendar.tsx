@@ -13,11 +13,13 @@ interface Props {
 
 export default (props: Props) => {
     const currentTime = DateTime.fromISO(props.currentTime);
+    const currentTimeStartOfDay = currentTime.startOf('day');
+    const currentTimeEndOfDay = currentTime.endOf('day');
     const viewStartDate = currentTime.startOf('month').startOf('week');
     const viewEndDate = currentTime.endOf('month').endOf('week');
     let iterator = viewStartDate;
-    const weeks: Array<Array<{ time: DateTime; events: Event[] }>> = [];
-    let currentWeekList: Array<{ time: DateTime; events: Event[] }> = [];
+    const weeks: Array<Array<{ time: DateTime; events: Event[]; isCurrentDay: boolean }>> = [];
+    let currentWeekList: Array<{ time: DateTime; events: Event[]; isCurrentDay: boolean }> = [];
     let currentWeekNumber = viewStartDate.weekNumber;
     while (iterator < viewEndDate) {
         if (currentWeekNumber !== iterator.weekNumber) {
@@ -28,6 +30,7 @@ export default (props: Props) => {
 
         currentWeekList.push({
             time: iterator,
+            isCurrentDay: currentTimeStartOfDay <= iterator && iterator <= currentTimeEndOfDay,
             events: props.events.filter(event => filterEvent(event, iterator, 'day')),
         });
 
@@ -38,8 +41,10 @@ export default (props: Props) => {
             {weeks.map((week, index) => (
                 <div className="Row" key={index}>
                     {week.map(d => (
-                        <div className="Column" key={d.time.toISODate()}>
-                            {d.time.day}
+                        <div className={`Column${d.isCurrentDay ? ' current' : ''}`} key={d.time.toISODate()}>
+                            <div className="TimeLabel">
+                                {d.time.day}
+                            </div>
                             {d.events.map((event, key) => (
                                 <div style={{ backgroundColor: props.calendarColors[event.calendarUrl] }} key={key}>
                                     {event.summary}

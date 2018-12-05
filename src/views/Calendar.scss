@@ -11,6 +11,13 @@
             flex-grow: 1;
             flex-basis: 0;
             justify-content: space-evenly;
+            padding: 0.2rem;
+            .TimeLabel {
+                font-size: 1.2rem;
+            }
+            &.current {
+                background-color: #ccc;
+            }
         }
     }
 }
