@@ -2,13 +2,21 @@ import { MiddlewareAPI, Dispatch, AnyAction } from 'redux';
 import { State } from '../reducers';
 
 let isOpen = false;
+let currentStore: MiddlewareAPI<Dispatch<AnyAction>, State>;
+const actionsBuffer: AnyAction[] = [];
+
 const ws = new WebSocket(`ws://${location.hostname}:3001/ws`);
+
 ws.onopen = () => {
     console.log('open');
     isOpen = true;
+    actionsBuffer.forEach(action => {
+        ws.send(JSON.stringify(action));
+    });
 };
-ws.onmessage = m => {
-    console.log(m);
+ws.onmessage = event => {
+    console.log(event.data);
+    currentStore.dispatch(JSON.parse(event.data));
 };
 ws.onclose = () => {
     // websocket is closed.
@@ -21,12 +29,14 @@ export const websocketMiddleware = (_store: MiddlewareAPI<Dispatch, State>) => (
 ) => (action: AnyAction) => {
     if (isOpen) {
         ws.send(JSON.stringify(action));
+    } else {
+        actionsBuffer.push(action);
     }
     const result = next(action);
     return result;
 };
 
 // tslint:disable-next-line:variable-name
-export const initServerWebsocketMiddleware = (_store: MiddlewareAPI<Dispatch<AnyAction>, State>) => {
-    //
+export const initServerWebsocketMiddleware = (store: MiddlewareAPI<Dispatch<AnyAction>, State>) => {
+    currentStore = store;
 };

@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from './reducers';
-import { serverListMiddleware, initServerListMiddleware } from './middleware/serverList';
+import { initServerListMiddleware } from './middleware/serverList';
 import { serverFormMiddleware } from './middleware/serverForm';
 import { initCurrentViewMiddleware } from './middleware/currentView';
 import { calendarListMiddleware, initCalendarListMiddleware } from './middleware/calendarList';
@@ -14,7 +14,6 @@ const store = createStore(
     composeEnhancers(
         applyMiddleware(
             websocketMiddleware,
-            serverListMiddleware,
             serverFormMiddleware,
             calendarListMiddleware,
         ),
@@ -22,8 +21,8 @@ const store = createStore(
 );
 
 initServerWebsocketMiddleware(store);
-initServerListMiddleware(store);
 initCurrentViewMiddleware(store);
+initServerListMiddleware(store);
 initCalendarListMiddleware(store);
 
 export default store;
