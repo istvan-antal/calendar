@@ -96,5 +96,9 @@
     },
     "reactTsRuntime": {
         "compilerMiddleware": "./src/build"
+    },
+    "engines": {
+        "node": "10.14.1",
+        "npm": "6.4.1"
     }
 }
