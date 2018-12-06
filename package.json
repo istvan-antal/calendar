@@ -8,7 +8,9 @@
         "start": "ts-node ./src/devServer.ts",
         "build": "ts-node ./src/build.ts",
         "serve": "ts-node ./src/server/index.ts",
-        "test-dev": "jest --env=jsdom --watch"
+        "test-dev": "jest --env=jsdom --watch",
+        "predesktop": "npm run build",
+        "desktop": "electron ./dist/desktop.js"
     },
     "keywords": [],
     "author": "István Antal <i@istvan.xyz>",
@@ -86,6 +88,7 @@
         "body-parser": "^1.18.3",
         "charge-sdk": "^0.3.13",
         "dav": "^1.8.0",
+        "electron": "^3.0.10",
         "express": "^4.16.4",
         "luxon": "^1.8.2",
         "react": "^16.6.3",
