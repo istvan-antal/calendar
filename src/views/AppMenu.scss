@@ -1,3 +1,4 @@
+@import "./Variables.scss";
 @import "./Form.scss";
 
 .AppMenu {
@@ -6,8 +7,8 @@
         padding: 3px 7px;
         outline: none;
         border: none;
-        color: #FFF;
-        background-color: #21252b;
+        color: $textColor;
+        background-color: $foregroundColor;
         cursor: pointer;
     }
     .AppMenuDropDown {
@@ -15,13 +16,13 @@
         top: 22px;
         right: 0;
         width: 200px;
-        background-color: #21252b;
+        background-color: $foregroundColor;
         .AppMenuDropDownItem {
             display: block;
             padding: 0.5rem;
             cursor: pointer;
             &:hover {
-                background-color: rgb(52, 57, 66);
+                background-color: $highlightColor
             }
         }
     }

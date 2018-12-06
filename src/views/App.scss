@@ -1,3 +1,5 @@
+@import "./Variables.scss";
+
 html, body, #app,.App {
     height: 100%;
     padding: 0;
@@ -7,6 +9,6 @@ html, body, #app,.App {
 .App {
     display: flex;
     flex-direction: column;
-    background-color: rgb(43, 47, 54);
-    color: #CCC;
+    background-color: $background;
+    color: $textColor;
 }
