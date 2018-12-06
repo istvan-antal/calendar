@@ -6,7 +6,7 @@
     "scripts": {
         "test": "charge-sdk test",
         "start": "ts-node ./src/devServer.ts",
-        "build": "charge-sdk build",
+        "build": "ts-node ./src/builds.ts",
         "serve": "ts-node ./src/server/index.ts",
         "test-dev": "jest --env=jsdom --watch"
     },
