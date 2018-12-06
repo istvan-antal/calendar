@@ -13,16 +13,33 @@ interface Props {
     onClose(): void;
 }
 
-export default (props: Props) => (
-    <div className={`Dialog${props.className ? ` ${props.className}` : ''}`}>
-        <div className="DialogHeader">
-            <div className="DialogHeaderTitle">
-                {props.title}
+export default class Dialog extends React.Component<Props> {
+    private onEscape!: (e: KeyboardEvent) => void;
+    componentDidMount() {
+        this.onEscape = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                this.props.onClose();
+            }
+        };
+        document.addEventListener('keydown', this.onEscape);
+    }
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.onEscape);
+    }
+    render() {
+        const props = this.props;
+        return (
+        <div className={`Dialog${props.className ? ` ${props.className}` : ''}`}>
+            <div className="DialogHeader">
+                <div className="DialogHeaderTitle">
+                    {props.title}
+                </div>
+                <a className="DialogHeaderCloseIcon" onClick={props.onClose}>
+                    <FontAwesomeIcon icon="times" />
+                </a>
             </div>
-            <a className="DialogHeaderCloseIcon" onClick={props.onClose}>
-                <FontAwesomeIcon icon="times" />
-            </a>
+            {props.children}
         </div>
-        {props.children}
-    </div>
- );
+        );
+    }
+}
