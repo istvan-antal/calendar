@@ -95,7 +95,7 @@
         "ws": "^6.1.2"
     },
     "reactTsRuntime": {
-        "compilerMiddleware": "./src/build"
+        "compilerMiddleware": "./src/compiler"
     },
     "engines": {
         "node": "10.14.1",
