@@ -1,13 +1,14 @@
 @import "./Variables.scss";
-$dialogWidth: 300px;
+$dialogWidth: 400px;
 
 .Dialog {
     position: absolute;
     top: 50px;
     left: calc(50% - $dialogWidth / 2);
     width: $dialogWidth;
-    padding: 0.5rem;
+    // padding: 0.5rem;
     background-color: $foregroundColor;
+    border: 1px solid #21252b;
     > button {
         padding: 3px 7px;
         outline: none;
@@ -19,5 +20,13 @@ $dialogWidth: 300px;
     .DialogHeader {
         display: flex;
         justify-content: space-between;
+        background-color: rgb(39, 52, 73);
+        padding: 0.5rem 0.8rem;
+        .DialogHeaderCloseIcon {
+            cursor: pointer;
+        }
+    }
+    .DialogBody {
+        padding: 0.8rem;
     }
 }

@@ -38,7 +38,9 @@ export default class Dialog extends React.Component<Props> {
                     <FontAwesomeIcon icon="times" />
                 </a>
             </div>
-            {props.children}
+            <div className="DialogBody">
+                {props.children}
+            </div>
         </div>
         );
     }
