@@ -6,7 +6,15 @@ $dialogWidth: 300px;
     left: calc(50% - $dialogWidth / 2);
     width: $dialogWidth;
     padding: 0.5rem;
-    background-color: #CCC;
+    background-color: #21252b;
+    > button {
+        padding: 3px 7px;
+        outline: none;
+        border: none;
+        color: #FFF;
+        background-color: #21252b;
+        cursor: pointer;
+    }
     .DialogHeader {
         display: flex;
         justify-content: space-between;

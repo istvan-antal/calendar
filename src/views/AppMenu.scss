@@ -2,15 +2,27 @@
 
 .AppMenu {
     position: relative;
+    > button {
+        padding: 3px 7px;
+        outline: none;
+        border: none;
+        color: #FFF;
+        background-color: #21252b;
+        cursor: pointer;
+    }
     .AppMenuDropDown {
         position: absolute;
-        top: 24px;
+        top: 22px;
         right: 0;
-        width: 300px;
-        padding: 0.5rem;
-        background-color: #CCC;
+        width: 200px;
+        background-color: #21252b;
         .AppMenuDropDownItem {
+            display: block;
+            padding: 0.5rem;
             cursor: pointer;
+            &:hover {
+                background-color: rgb(52, 57, 66);
+            }
         }
     }
 }

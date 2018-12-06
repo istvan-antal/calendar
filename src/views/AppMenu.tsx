@@ -25,29 +25,30 @@ interface AppMenuDropDownProps {
 
 const AppMenuDropDown = (props: AppMenuDropDownProps) => (
     <div className="AppMenuDropDown">
-        <ul>
-            <li>
-                <a className="AppMenuDropDownItem" onClick={() => {
-                    props.openCalendarList();
-                    props.closeAppMenu();
-                }}>
-                    Calendars
-                </a>
-            </li>
-            <li>
-                <a className="AppMenuDropDownItem" onClick={() => {
-                    props.openServerList();
-                    props.closeAppMenu();
-                }}>
-                    Servers
-                </a>
-            </li>
-        </ul>
+        <a className="AppMenuDropDownItem" onClick={() => {
+            props.openCalendarList();
+            props.closeAppMenu();
+        }}>
+            Calendars
+        </a>
+        <a className="AppMenuDropDownItem" onClick={() => {
+            props.openServerList();
+            props.closeAppMenu();
+        }}>
+            Servers
+        </a>
     </div>
 );
 
 export default (props: Props) => (
-    <FocusView onFocusLost={props.closeAppMenu} className="AppMenu">
+    <FocusView
+    className="AppMenu"
+        onFocusLost={() => {
+            if (props.isAppMenuOpen) {
+                props.closeAppMenu();
+            }
+        }}
+    >
         <button onClick={props.toggleAppMenu}>
             <FontAwesomeIcon icon="bars" />
         </button>
