@@ -82,7 +82,9 @@ export default (props: Props) => {
                             </div>
                             {d.events.map((event, key) => (
                                 <div
-                                    className={`Event${event.includesEnd ? ' includesEnd' : ''}`}
+                                    className={`Event${event.includesEnd ? ' includesEnd' : ''}${
+                                        event.summary === 'Not available' ? ' dim' : ''
+                                    }`}
                                     style={{ backgroundColor: props.calendarColors[event.calendarUrl] }} key={key}>
                                     {event.isIntermediate ? <>&nbsp;</> : event.summary}
                                 </div>
