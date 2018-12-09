@@ -2,7 +2,7 @@ import { MiddlewareAPI, Dispatch, AnyAction } from 'redux';
 import { State } from '../reducers';
 
 let isOpen = false;
-let currentStore: MiddlewareAPI<Dispatch<AnyAction>, State>;
+let currentStore: MiddlewareAPI<Dispatch, State>;
 const actionsBuffer: AnyAction[] = [];
 
 const ws = new WebSocket(`ws://${location.hostname}:3001/ws`);
@@ -36,6 +36,6 @@ export const websocketMiddleware = (_store: MiddlewareAPI<Dispatch, State>) => (
 };
 
 // tslint:disable-next-line:variable-name
-export const initServerWebsocketMiddleware = (store: MiddlewareAPI<Dispatch<AnyAction>, State>) => {
+export const initServerWebsocketMiddleware = (store: MiddlewareAPI<Dispatch, State>) => {
     currentStore = store;
 };

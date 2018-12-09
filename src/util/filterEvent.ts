@@ -12,7 +12,11 @@ const filterByRange = (event: Event, startTime: DateTime, endTime: DateTime) => 
         month: event.end.month,
         day: event.end.day,
     });
-    return (eventStartTime >= startTime && eventStartTime <= endTime) ||
+
+    // event contains date
+    return (startTime > eventStartTime && endTime < eventEndTime) ||
+        // date contains event
+        (eventStartTime >= startTime && eventStartTime <= endTime) ||
         (eventEndTime <= endTime && eventEndTime >= startTime);
 };
 
