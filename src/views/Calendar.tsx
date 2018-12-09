@@ -21,7 +21,8 @@ const evenTimeToDateTime = (eventTime: { year: number; month: number; day: numbe
 );
 
 const isIntermediate = (event: Event, startTime: DateTime, endTime: DateTime) => (
-    startTime > evenTimeToDateTime(event.start) && endTime < evenTimeToDateTime(event.end)
+    (startTime > evenTimeToDateTime(event.start) && endTime <= evenTimeToDateTime(event.end)) ||
+    (startTime > evenTimeToDateTime(event.start) && evenTimeToDateTime(event.end) <= endTime)
 );
 
 const includesEnd = (event: Event, endTime: DateTime) => (
@@ -52,7 +53,17 @@ export default (props: Props) => {
                 ...event,
                 isIntermediate: isIntermediate(event, iterator.startOf('day'), iterator.endOf('day')),
                 includesEnd: includesEnd(event, iterator.endOf('day')),
-            })).sort((a, b) => evenTimeToDateTime(a.start).toMillis() - evenTimeToDateTime(b.start).toMillis()),
+            }))
+            .sort((a, b) => {
+                if ((!b.isIntermediate && b.includesEnd) && !(!a.isIntermediate && a.includesEnd)) {
+                    return -1;
+                }
+                if (a.calendarUrl === b.calendarUrl) {
+                    return evenTimeToDateTime(a.start).toMillis() - evenTimeToDateTime(b.start).toMillis();
+                }
+                return a.calendarUrl.localeCompare(b.calendarUrl);
+            })
+            ,
         });
 
         iterator = iterator.plus({ days: 1 });
