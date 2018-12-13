@@ -9,8 +9,8 @@
         "build": "ts-node ./src/build.ts",
         "serve": "ts-node ./src/server/index.ts",
         "test-dev": "jest --env=jsdom --watch",
-        "predesktop": "npm run build",
-        "desktop": "electron ./dist/desktop.js"
+        "predesktop": "tsc ./src/desktopDev.ts --outDir ./dist",
+        "desktop": "electron ./dist/desktopDev.js"
     },
     "keywords": [],
     "author": "István Antal <i@istvan.xyz>",

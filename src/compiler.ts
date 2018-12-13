@@ -6,7 +6,7 @@ import data from './data';
 export default (config: any) => {
     config.entry = {
         app: config.entry.length > 1 ? config.entry : config.entry[0],
-        desktop: config.entry.length > 1 ? [config.entry[0], './src/desktop'] : './src/desktop',
+        desktopDev: config.entry.length > 1 ? [config.entry[0], './src/desktopDev'] : './src/desktopDev',
     };
 
     config.output.filename = '[name].js';
