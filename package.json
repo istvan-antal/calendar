@@ -88,7 +88,7 @@
         "body-parser": "^1.18.3",
         "charge-sdk": "^0.4.3",
         "dav": "^1.8.0",
-        "electron": "^11.5.0",
+        "electron": "^15.5.5",
         "express": "^4.16.4",
         "luxon": "^1.11.3",
         "react": "^16.8.3",
